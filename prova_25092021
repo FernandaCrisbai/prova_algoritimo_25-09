@@ -1,0 +1,243 @@
+programa
+{
+	inclua biblioteca Util --> u
+
+	inteiro numeros[10]
+	
+	funcao inicio()
+	{
+		caracter continua
+		gerar_vetor()
+		
+		faca{
+
+			limpa()
+			
+			escreva("* * *  Seleção de Programas a serem executados * * *")
+
+			escreva("\n1 – Gerar Vetor")
+			escreva("\n2 – Somar Pares")
+			escreva("\n3 – Somar Ímpares")
+			escreva("\n4 – Somar Entre 6 e 14")
+			escreva("\n5 – Gerar Vetor na Ordem Inversa")
+			escreva("\n6 – Gerar Vetor Copiar valores sem repetir")
+			escreva("\n9 – Finalizar")
+
+			
+			menu()
+			
+				
+			escreva("\nContinua a Execução do Program ? (S/N) ")			
+			leia(continua)
+		}enquanto(continua == 'S' ou continua == 's')
+	}
+
+	funcao menu()
+	{
+		inteiro op = 0
+		
+		
+		
+
+		escreva("\nSelecione uma opção válida: ")
+		leia(op)
+
+		escolha(op){
+
+			caso 1:
+				gerar_vetor()
+				pare
+			caso 2:
+				somar_pares()
+				pare
+			caso 3:
+				soma_impares()
+				pare				
+			caso 4:
+				soma_entre()
+				pare
+			caso 5:
+				ordem_inversa()
+				pare
+			caso 6:
+				sem_repetir()
+				pare
+			caso 9:
+				finalizar()
+				pare
+			caso contrario:
+				escreva("Informe uma opção válida\n")
+				pare
+				
+		}
+	}
+
+	funcao gerar_vetor()
+	 
+	{
+		inteiro contador
+		escreva("***Gerar 10 vetores***\n\n")
+		
+		para(contador = 0; contador < 10; contador++)
+		{
+            numeros[contador] = u.sorteia(1, 20)
+            escreva(contador+1,"º número sorteado: ",numeros[contador],"\n")
+        }
+
+     }
+	
+	
+	funcao somar_pares()
+	{
+	   
+      inteiro somaPares = 0
+      inteiro contador, contadorAuxiliar = 0
+      inteiro numeroAux[10]
+      
+      escreva("\n***Somar os números pares***\n\n")
+      
+      para(contador = 0; contador < 10; contador++)
+      	{
+            se(numeros[contador]%2 == 0)
+           	 { 
+                somaPares += numeros[contador]
+                numeroAux[contadorAuxiliar] = numeros[contador]
+                contadorAuxiliar++
+		
+		 	 }
+     	 }
+     	 
+      escreva("Os números pares gerados foram: " )
+      
+      para(contador = 0; contador < 10; contador ++)
+     	{
+      		se(numeroAux[contador] != 0) 
+      		{
+      			escreva(numeroAux[contador], " ")
+      		}
+          }
+
+          escreva("\nA soma é: ", somaPares, "\n")
+	}
+
+	funcao soma_impares()
+	{
+	 inteiro somaImpares = 0
+      inteiro contador, contadorAuxiliar = 0
+      inteiro numeroAux [10]
+      
+      escreva("***Somar os números ímpares***\n\n")
+      
+      para(contador = 0; contador < 10; contador++)
+      	{
+            se(numeros[contador]%2 == 1)
+           	 { 
+                somaImpares += numeros[contador]
+                numeroAux[contadorAuxiliar] = numeros[contador]
+                contadorAuxiliar++
+		
+		 	 }
+     	 }
+      escreva("Os números impares gerados foram: ")
+
+      para(contador = 0; contador < 10; contador++)
+      	{
+      		se(numeroAux[contador] != 0)
+      		{
+      			escreva(numeroAux[contador], " ")
+      		}
+      	}
+      escreva("\nA soma é: ", somaImpares, "\n")
+}
+
+	funcao soma_entre() 
+	{
+	inteiro somaParcial = 0
+	inteiro contador, contadorAuxiliar = 0
+	inteiro numeroAux [10]
+
+	escreva("\n***Somar os números entre 6 e 14***\n\n")
+	
+        para(contador = 0; contador < 10; contador++)
+        {
+            se(numeros[contador] > 6 e numeros[contador] < 14)
+            
+            {
+                somaParcial+= numeros[contador]
+                numeroAux[contadorAuxiliar] = numeros[contador]
+                contadorAuxiliar++
+            }
+
+        }
+
+        escreva("Os números gerados foram: ")
+        
+        para(contador = 0; contador < 10; contador++)
+      	{
+      		se(numeroAux[contador] != 0)
+      		{
+      			escreva(numeroAux[contador], " - ")
+      		}
+      	}
+      escreva("\nA soma é: ", somaParcial, "\n")
+				
+	}
+
+	funcao ordem_inversa()
+	{
+		
+	   inteiro vetor[10]
+        inteiro inverso = 9
+        inteiro contador
+
+	   escreva("\n***Vetor em ordem inversa***\n")
+        
+        escreva("\nVetor na ordem original: ")
+        para(contador = 0; contador < 10; contador++)
+        { 
+		  escreva(numeros[contador], " ")
+            vetor[inverso] = numeros[contador]
+            inverso--
+        }
+		
+        escreva("\nVetores na ordem inversa: ")
+        para(contador = 0; contador < 10; contador++)
+        { 
+            escreva(vetor[contador]," ")
+	   }
+	}
+	
+	funcao sem_repetir()
+	{
+	   inteiro numerosDiferentes [10]
+	   inteiro contador, contador2
+
+	   escreva("\n***Valores de repetição***\n")
+	   
+		para (contador = 0; contador < 10; contador ++) 
+		{
+			numerosDiferentes [contador] = numeros [contador]
+			
+			para (contador2 = contador - 1; contador2 > 0; contador2 --) 
+			{
+				se (numerosDiferentes [contador2] == numerosDiferentes [contador]) 
+				{
+					numerosDiferentes [contador] = 0
+				}
+			}
+		}
+         escreva ("\nNumeros com repetição = 0 \n")
+         para (contador = 0; contador < 10; contador ++) 
+         { 
+         	 escreva (numerosDiferentes [contador], " ")
+			
+	    }
+	
+	}			
+		
+	funcao finalizar()
+	{
+	
+				
+	}			
+}
